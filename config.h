@@ -8,5 +8,5 @@ struct dspelement main_menu[] = {
 	{EL_DIVIDER, {.i=2}, NULL},
 		{EL_VALUE, {.v="%d"}, vram_max},
 		{EL_VALUE, {.v="%d"}, vram_total},
-	{EL_PLAINTEXT {.v="sTop poc v0.0.1"}, NULL},
+	{EL_PLAINTEXT, {.v="sTop poc v0.0.1"}, NULL},
 };
