@@ -13,4 +13,5 @@ struct dspelement {
 	int type;
 	struct elargs args;
 	void *func;
+	char **prev_buff;
 };
