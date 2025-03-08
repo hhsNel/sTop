@@ -7,10 +7,10 @@
 struct elargs {
 	int i;
 	void *v;
-}
+};
 
 struct dspelement {
 	int type;
 	struct elargs args;
-	void *func
-}
+	void *func;
+};
