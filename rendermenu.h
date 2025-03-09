@@ -18,3 +18,10 @@ void init_menu(struct dspelement *menu, size_t menu_size, size_t w, size_t h) {
 	}
 }
 
+void unload_menu(struct dspelement *menu, size_t menu_size) {
+	size_t i;
+	for(i = 0; i < menu_size; ++i) {
+		unload_element(menu + i);
+	}
+}
+
