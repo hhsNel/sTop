@@ -1,3 +1,5 @@
+#define OUTPUT_BUFFER_SIZE 2048
+
 struct dspelement help_menu[] = {
 	{EL_PLAINTEXT, {.v="some text"}, NULL},
 };

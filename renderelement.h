@@ -27,3 +27,11 @@ size_t render_element(struct dspelement *menu, size_t i, size_t menu_size) {
 	}
 	return r;
 }
+
+size_t render_plaintext(struct dspelement *menu, size_t i, size_t menu_size) {
+	size_t x = 0;
+	size_t y = 0;
+	write_to_element(menu+i, &x, &y, (char *)menu[i].args.v);
+	return 1;
+}
+
