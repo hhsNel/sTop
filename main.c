@@ -1,7 +1,8 @@
 #include "dspelement.h"
+#include "renderelement.h"
+#include "rendermenu.h"
 #include "screen.h"
 #include "valuegetter.h"
-#include "renderelement.h"
 
 #include "config.h"
 

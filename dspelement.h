@@ -1,4 +1,6 @@
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 #define EL_PLAINTEXT 0
 #define EL_MENU_BUTTON 1
@@ -23,6 +25,10 @@ struct dspelement {
 
 void init_element(struct dspelement *element, size_t w, size_t h);
 void write_to_element(struct dspelement *element, size_t *x, size_t *y, char *str);
+void unload_element(struct dspelement *element);
+size_t element_render_differences(struct dspelement *menu, size_t i, size_t menu_size, size_t *y);
+static size_t render_divider_diff(struct dspelement *menu, size_t i, size_t menu_size, size_t *y);
+static void render_simple_diff(struct dspelement element, size_t x, size_t y);
 
 void init_element(struct dspelement *element, size_t w, size_t h) {
 	size_t i;
@@ -58,6 +64,33 @@ void write_to_element(struct dspelement *element, size_t *x, size_t *y, char *st
 			if(*y == element->h) return;
 		}
 		++str;
+	}
+}
+
+size_t element_render_differences(struct dspelement *menu, size_t i, size_t menu_size, size_t *y) {
+	size_t r;
+
+	switch(menu[i].type) {
+		case EL_DIVIDER:
+			r = render_divider_diff(menu, i, menu_size, y);
+			break;
+		default:
+			render_simple_diff(menu[i], 0, *y);
+			r = 1;
+			*y += menu[i].h;
+			break;
+	}
+	return r;
+}
+
+static void render_simple_diff(struct dspelement element, size_t x, size_t y) {
+	size_t i;
+
+	for(i = 0; i < element.h; ++i) {
+		if(strcmp(element.buff[i], element.prev_buff[i]) != 0) {
+			strcpy(element.prev_buff[i], element.buff[i]);
+			printf("\033[%d;%dH%s", y + i, x, element.buff[i]);
+		}
 	}
 }
 
