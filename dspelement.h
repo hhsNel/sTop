@@ -35,6 +35,14 @@ size_t render_element(struct dspelement *element, size_t i);
 size_t render_def(struct dspelement *element, size_t i);
 size_t render_div(struct dspelement *element, size_t i);
 
+size_t buff_write_element(struct dspelement *element, size_t i, size_t x, size_t y, char **buff);
+size_t buff_write_def(struct dspelement *element, size_t i, size_t x, size_t y, char **buff);
+size_t buff_write_div(struct dspelement *element, size_t i, size_t x, size_t y, char **buff);
+
+size_t out_delta_element(struct dspelement *element, size_t i, size_t x, size_t y);
+size_t out_delta_def(struct dspelement *element, size_t i, size_t x, size_t y);
+size_t out_delta_div(struct dspelement *element, size_t i, size_t x, size_t y);
+
 void write_to_element(struct dspelement *element, size_t *x, size_t *y, char *str);
 void unload_element(struct dspelement *element);
 size_t element_render_differences(struct dspelement *menu, size_t i, size_t menu_size, size_t *y);
