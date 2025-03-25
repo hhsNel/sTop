@@ -23,7 +23,18 @@ struct dspelement {
 	size_t w, h;
 };
 
-void init_element(struct dspelement *element, size_t w, size_t h);
+size_t count_element(struct dspelement *menu, size_t i);
+static size_t count_def(struct dspelement *menu, size_t i);
+static size_t count_div(struct dspelement *menu, size_t i);
+
+size_t init_element(struct dspelement *menu, size_t i, size_t w, size_t h);
+static size_t init_def(struct dspelement *menu, size_t i, size_t w, size_t h);
+staitc size_t init_div(struct dspelement *menu, size_t i, size_t w, size_t h);
+
+size_t render_element(struct dspelement *element, size_t i);
+size_t render_def(struct dspelement *element, size_t i);
+size_t render_div(struct dspelement *element, size_t i);
+
 void write_to_element(struct dspelement *element, size_t *x, size_t *y, char *str);
 void unload_element(struct dspelement *element);
 size_t element_render_differences(struct dspelement *menu, size_t i, size_t menu_size, size_t *y);
